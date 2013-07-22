@@ -37,11 +37,19 @@ public class Tetwis
 			Shape background = new Rectangle(getPreferredSize());
 			GFX2D.setColor(Color.BLUE); GFX2D.fill(background);
 			GFX2D.draw(background);
+			
+			Shape leftframe = new Rectangle(0, 0, 56, 504);
+			Shape rightframe = new Rectangle(336, 0, 56, 504);
+			Shape bottomframe = new Rectangle(0, 505, 392, 561);
+			GFX2D.setColor(Color.RED);
+			GFX2D.fill(leftframe); GFX2D.draw(leftframe);
+			GFX2D.fill(rightframe); GFX2D.draw(rightframe);
+			GFX2D.fill(bottomframe); GFX2D.draw(bottomframe);
 		}
 		
 		public Dimension getPreferredSize()
 		{
-			return new Dimension(360, 480);
+			return new Dimension(392, 561);
 		}
 		
 		public void run()
