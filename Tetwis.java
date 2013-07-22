@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class Tetwis
 {
@@ -21,8 +22,14 @@ public class Tetwis
 		};
 	}
 	
-	public static class TetwisJComponent extends JComponent
+	public static class TetwisJComponent
+	extends JComponent implements Runnable
 	{
+		public TetwisJComponent()
+		{
+			(new Thread(this)).start();
+		}
+		
 		public void paintComponent(Graphics GFX)
 		{
 			Graphics2D GFX2D = (Graphics2D)GFX;
@@ -35,6 +42,18 @@ public class Tetwis
 		public Dimension getPreferredSize()
 		{
 			return new Dimension(360, 480);
+		}
+		
+		public void run()
+		{
+			while(true)
+			{
+				repaint();
+				
+				try {Thread.sleep(1000);}
+				catch(InterruptedException err)
+				{System.out.println(err.toString());}
+			}
 		}
 	}
 }
