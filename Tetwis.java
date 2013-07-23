@@ -25,6 +25,8 @@ public class Tetwis
 	public static class TetwisJComponent
 	extends JComponent implements Runnable
 	{
+		Tetratrix tetratrix = new Tetratrix();
+		
 		public TetwisJComponent()
 		{
 			(new Thread(this)).start();
@@ -50,9 +52,12 @@ public class Tetwis
 			{
 				for(int y = 0; y < 18; y++)
 				{
-					Shape square = new Rectangle(x*28+57, y*28, 28-1, 28-1);
-					GFX2D.setColor(Color.GREEN); GFX2D.fill(square);
-					GFX2D.draw(square);
+					if(tetratrix.tetribits[x][y])
+					{
+						Shape square = new Rectangle(x*28+57, y*28, 28-1, 28-1);
+						GFX2D.setColor(Color.GREEN); GFX2D.fill(square);
+						GFX2D.draw(square);
+					}
 				}
 			}
 		}
