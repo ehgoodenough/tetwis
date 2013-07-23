@@ -48,9 +48,9 @@ public class Tetwis
 			GFX2D.fill(rightframe); GFX2D.draw(rightframe);
 			GFX2D.fill(bottomframe); GFX2D.draw(bottomframe);
 			
-			for(int x = 0; x < 10; x++)
+			for(int x = 0; x < tetratrix.WIDTH_IN_TETRIBITS; x++)
 			{
-				for(int y = 0; y < 18; y++)
+				for(int y = 0; y < tetratrix.HEIGHT_IN_TETRIBITS; y++)
 				{
 					if(tetratrix.tetribits[x][y])
 					{

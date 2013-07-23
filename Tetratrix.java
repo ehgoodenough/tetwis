@@ -1,6 +1,7 @@
 public class Tetratrix
 {
-	public boolean[][] tetribits = new boolean[10][18];
+	public final int WIDTH_IN_TETRIBITS = 10; public final int HEIGHT_IN_TETRIBITS = 18;
+	public boolean[][] tetribits = new boolean[WIDTH_IN_TETRIBITS][HEIGHT_IN_TETRIBITS];
 	
 	public Tetratrix()
 	{
