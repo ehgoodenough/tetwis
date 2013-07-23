@@ -2,17 +2,17 @@ import java.awt.Point;
 
 public class Tetromino
 {
-	public Point position = new Point(4, 8);
-	
-	public boolean[][] tetribits;
+	public Point position;
+	public Tetribit[][] tetribits;
 	
 	public Tetromino()
 	{
-		tetribits = new boolean[2][3];
+		position = new Point(4, 8);
+		tetribits = new Tetribit[2][3];
 		
-		tetribits[0][0] = true;
-		tetribits[0][1] = true;
-		tetribits[1][1] = true;
-		tetribits[1][2] = true;
+		tetribits[0][0] = new Tetribit(0, 255, 0);
+		tetribits[0][1] = new Tetribit(0, 255, 0);
+		tetribits[1][1] = new Tetribit(0, 255, 0);
+		tetribits[1][2] = new Tetribit(0, 255, 0);
 	}
 }

@@ -53,11 +53,11 @@ public class Tetwis
 			{
 				for(int y = 0; y < tetratrix.HEIGHT_IN_TETRIBITS; y++)
 				{
-					if(tetratrix.tetribits[x][y])
+					if(tetratrix.tetribits[x][y] != null)
 					{
 						Shape square = new Rectangle(x*28+57, y*28, 28-1, 28-1);
-						GFX2D.setColor(Color.GREEN); GFX2D.fill(square);
-						GFX2D.draw(square);
+						GFX2D.setColor(tetratrix.tetribits[x][y].color);
+						GFX2D.fill(square); GFX2D.draw(square);
 					}
 				}
 			}
@@ -66,11 +66,11 @@ public class Tetwis
 			{
 				for(int y = 0; y < tetromino.tetribits[x].length; y++)
 				{
-					if(tetromino.tetribits[x][y])
+					if(tetromino.tetribits[x][y] != null)
 					{
 						Shape square = new Rectangle(x*28+57+tetromino.position.x*28, y*28+tetromino.position.y*28, 28-1, 28-1);
-						GFX2D.setColor(Color.ORANGE); GFX2D.fill(square);
-						GFX2D.draw(square);
+						GFX2D.setColor(tetromino.tetribits[x][y].color);
+						GFX2D.fill(square); GFX2D.draw(square);
 					}
 				}
 			}
