@@ -15,4 +15,9 @@ public class Tetromino
 		tetribits[1][1] = new Tetribit(0, 255, 0);
 		tetribits[1][2] = new Tetribit(0, 255, 0);
 	}
+	
+	public void drop()
+	{
+		position.y++;
+	}
 }

@@ -85,6 +85,11 @@ public class Tetwis
 		{
 			while(true)
 			{
+				if(tetratrix.canDrop(tetromino))
+				{
+					tetromino.drop();
+				}
+				
 				repaint();
 				
 				try {Thread.sleep(1000);}
