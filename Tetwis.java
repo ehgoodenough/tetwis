@@ -25,26 +25,24 @@ public class Tetwis
 	public static class TetwisJComponent
 	extends JComponent implements Runnable
 	{
+		Thread gameloop;
+		
 		Tetromino tetromino = new Tetromino();
 		Tetratrix tetratrix = new Tetratrix();
 		
 		public TetwisJComponent()
 		{
-			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "drop");
-			getActionMap().put("drop", new AbstractAction()
+			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "softdrop");
+			getActionMap().put("softdrop", new AbstractAction()
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canDrop(tetromino))
-					{
-						tetromino.drop();
-					}
-					
-					repaint();
+					if(tetratrix.canDrop(tetromino)) {tetromino.drop();}
+					repaint(); gameloop.interrupt();
 				}
 			});
 			
-			(new Thread(this)).start();
+			(gameloop = new Thread(this)).start();
 		}
 		
 		public void paintComponent(Graphics GFX)
@@ -105,11 +103,15 @@ public class Tetwis
 				}
 				
 				repaint();
-				
-				try {Thread.sleep(1000);}
-				catch(InterruptedException err)
-				{System.out.println(err.toString());}
+				sleep();
 			}
+		}
+		
+		public void sleep()
+		{
+			try {Thread.sleep(1000);}
+			catch(InterruptedException err)
+			{sleep();}
 		}
 	}
 }
