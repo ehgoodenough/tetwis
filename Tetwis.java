@@ -30,6 +30,20 @@ public class Tetwis
 		
 		public TetwisJComponent()
 		{
+			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "drop");
+			getActionMap().put("drop", new AbstractAction()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					if(tetratrix.canDrop(tetromino))
+					{
+						tetromino.drop();
+					}
+					
+					repaint();
+				}
+			});
+			
 			(new Thread(this)).start();
 		}
 		
