@@ -33,11 +33,20 @@ public class Tetwis
 		public TetwisJComponent()
 		{
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "softdrop");
+			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "harddrop");
 			getActionMap().put("softdrop", new AbstractAction()
 			{
 				public void actionPerformed(ActionEvent event)
 				{
 					if(tetratrix.canDrop(tetromino)) {tetromino.drop();}
+					repaint(); gameloop.interrupt();
+				}
+			});
+			getActionMap().put("harddrop", new AbstractAction()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					while(tetratrix.canDrop(tetromino)) {tetromino.drop();}
 					repaint(); gameloop.interrupt();
 				}
 			});
