@@ -32,8 +32,26 @@ public class Tetwis
 		
 		public TetwisJComponent()
 		{
+			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("LEFT"), "shiftleft");
+			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("RIGHT"), "shiftright");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "softdrop");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "harddrop");
+			getActionMap().put("shiftleft", new AbstractAction()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					if(tetratrix.canShiftLeft(tetromino)) {tetromino.shiftleft();}
+					repaint();
+				}
+			});
+			getActionMap().put("shiftright", new AbstractAction()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					if(tetratrix.canShiftRight(tetromino)) {tetromino.shiftright();}
+					repaint();
+				}
+			});
 			getActionMap().put("softdrop", new AbstractAction()
 			{
 				public void actionPerformed(ActionEvent event)

@@ -20,4 +20,14 @@ public class Tetromino
 	{
 		position.y++;
 	}
+	
+	public void shiftleft()
+	{
+		position.x--;
+	}
+	
+	public void shiftright()
+	{
+		position.x++;
+	}
 }
