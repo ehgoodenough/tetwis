@@ -71,4 +71,40 @@ public class Tetratrix
 		
 		return true;
 	}
+	
+	public boolean canEmbed(Tetromino tetromino)
+	{
+		for(int x = 0; x < tetromino.tetribits.length; x++)
+		{
+			for(int y = 0; y < tetromino.tetribits[x].length; y++)
+			{
+				if(tetromino.tetribits[x][y] != null)
+				{
+					int ex = tetromino.position.x + x;
+					int ey = tetromino.position.y + y;
+					
+					if(ey < 0) {return false;}
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	public void embed(Tetromino tetromino)
+	{
+		for(int x = 0; x < tetromino.tetribits.length; x++)
+		{
+			for(int y = 0; y < tetromino.tetribits[x].length; y++)
+			{
+				if(tetromino.tetribits[x][y] != null)
+				{
+					int ex = tetromino.position.x + x;
+					int ey = tetromino.position.y + y;
+					
+					tetribits[ex][ey] = tetromino.tetribits[x][y];
+				}
+			}
+		}
+	}
 }

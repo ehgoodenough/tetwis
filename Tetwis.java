@@ -57,7 +57,7 @@ public class Tetwis
 				public void actionPerformed(ActionEvent event)
 				{
 					if(tetratrix.canDrop(tetromino)) {tetromino.drop();}
-					repaint(); gameloop.interrupt();
+					else {reset();} repaint(); gameloop.interrupt();
 				}
 			});
 			getActionMap().put("harddrop", new AbstractAction()
@@ -65,7 +65,7 @@ public class Tetwis
 				public void actionPerformed(ActionEvent event)
 				{
 					while(tetratrix.canDrop(tetromino)) {tetromino.drop();}
-					repaint(); gameloop.interrupt();
+					reset(); repaint(); gameloop.interrupt();
 				}
 			});
 			
@@ -128,9 +128,23 @@ public class Tetwis
 				{
 					tetromino.drop();
 				}
+				else
+				{
+					reset();
+				}
 				
 				repaint();
 				sleep();
+			}
+		}
+		
+		public void reset()
+		{
+			if(tetratrix.canEmbed(tetromino))
+			{
+				tetratrix.embed(tetromino);
+				
+				tetromino = new Tetromino();
 			}
 		}
 		
