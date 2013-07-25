@@ -22,7 +22,7 @@ public class Tetratrix
 					
 					if(ey+1 >= HEIGHT_IN_TETRIBITS) {return false;}
 					try{if(tetribits[ex][ey+1] != null) {return false;}}
-					catch(Exception exception) {return false;}
+					catch(Exception exception) {}
 				}
 			}
 		}
@@ -43,7 +43,7 @@ public class Tetratrix
 					
 					if(ex-1 < 0) {return false;}
 					try{if(tetribits[ex-1][ey] != null) {return false;}}
-					catch(Exception exception) {return false;}
+					catch(Exception exception) {}
 				}
 			}
 		}
@@ -64,7 +64,7 @@ public class Tetratrix
 					
 					if(ex+1 >= WIDTH_IN_TETRIBITS) {return false;}
 					try{if(tetribits[ex+1][ey] != null) {return false;}}
-					catch(Exception exception) {return false;}
+					catch(Exception exception) {}
 				}
 			}
 		}
