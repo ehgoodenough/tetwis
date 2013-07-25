@@ -146,6 +146,11 @@ public class Tetwis
 				
 				tetromino = new Tetromino();
 			}
+			else
+			{
+				setVisible(false);
+				System.exit(0);
+			}
 		}
 		
 		public void sleep()
