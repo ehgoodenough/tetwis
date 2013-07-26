@@ -66,6 +66,29 @@ public class Tetratrix
 		return true;
 	}
 	
+	public boolean canRotate(Tetromino tetromino)
+	{
+		for(int x = 0; x < tetromino.tetribits.length; x++)
+		{
+			for(int y = 0; y < tetromino.tetribits[x].length; y++)
+			{
+				if(tetromino.tetribits[x][y] != null)
+				{
+					int ex = tetromino.position.x + y;
+					int ey = tetromino.position.y + tetromino.tetribits[0].length - x - 1;
+					
+					if(ex < 0) {return false;}
+					if(ex >= WIDTH_IN_TETRIBITS) {return false;}
+					if(ey >= HEIGHT_IN_TETRIBITS) {return false;}
+					try{if(tetribits[ex][ey] != null) {return false;}}
+					catch(Exception exception) {}
+				}
+			}
+		}
+		
+		return true;
+	}
+	
 	public boolean canEmbed(Tetromino tetromino)
 	{
 		for(int x = 0; x < tetromino.tetribits.length; x++)

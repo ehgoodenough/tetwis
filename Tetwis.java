@@ -36,6 +36,7 @@ public class Tetwis
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("RIGHT"), "shiftright");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "softdrop");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "harddrop");
+			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("UP"), "rotate");
 			getActionMap().put("shiftleft", new AbstractAction()
 			{
 				public void actionPerformed(ActionEvent event)
@@ -66,6 +67,14 @@ public class Tetwis
 				{
 					while(tetratrix.canDrop(tetromino)) {tetromino.drop();}
 					reset(); repaint(); gameloop.interrupt();
+				}
+			});
+			getActionMap().put("rotate", new AbstractAction()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					if(tetratrix.canRotate(tetromino)) {tetromino.rotate();}
+					repaint(); gameloop.interrupt();
 				}
 			});
 			
