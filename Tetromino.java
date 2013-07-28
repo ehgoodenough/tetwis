@@ -1,4 +1,5 @@
 import java.awt.Point;
+import java.util.Random;
 
 public class Tetromino
 {
@@ -7,13 +8,87 @@ public class Tetromino
 	
 	public Tetromino()
 	{
+		Random random = new Random();
+		switch(random.nextInt(7))
+		{
+		case 0: generateLine(); break;
+		case 1: generateLeftangle(); break;
+		case 2: generateRightangle(); break;
+		case 3: generateSquare(); break;
+		case 4: generateIntersection(); break;
+		case 5: generateLeftparallelogram(); break;
+		case 6: generateRightparallelogram(); break;
+		}
+	}
+	
+	public void generateRightangle()
+	{
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		
+		tetribits[1][0] = new Tetribit(0, 255, 0);
+		tetribits[1][1] = new Tetribit(0, 255, 0);
+		tetribits[1][2] = new Tetribit(0, 255, 0);
+		tetribits[0][2] = new Tetribit(0, 255, 0);
+	}
+	
+	public void generateLeftangle()
+	{
+		position = new Point(4, -3);
+		tetribits = new Tetribit[3][3];
+		tetribits[0][0] = new Tetribit(0, 255, 0);
+		tetribits[0][1] = new Tetribit(0, 255, 0);
+		tetribits[0][2] = new Tetribit(0, 255, 0);
+		tetribits[1][2] = new Tetribit(0, 255, 0);
+	}
+	
+	public void generateRightparallelogram()
+	{
+		position = new Point(4, -3);
+		tetribits = new Tetribit[3][3];
 		tetribits[0][0] = new Tetribit(0, 255, 0);
 		tetribits[0][1] = new Tetribit(0, 255, 0);
 		tetribits[1][1] = new Tetribit(0, 255, 0);
 		tetribits[1][2] = new Tetribit(0, 255, 0);
+	}
+	
+	public void generateLeftparallelogram()
+	{
+		position = new Point(4, -3);
+		tetribits = new Tetribit[3][3];
+		tetribits[1][0] = new Tetribit(0, 255, 0);
+		tetribits[1][1] = new Tetribit(0, 255, 0);
+		tetribits[0][1] = new Tetribit(0, 255, 0);
+		tetribits[0][2] = new Tetribit(0, 255, 0);
+	}
+	
+	public void generateSquare()
+	{
+		position = new Point(4, -2);
+		tetribits = new Tetribit[2][2];
+		tetribits[0][0] = new Tetribit(0, 255, 0);
+		tetribits[0][1] = new Tetribit(0, 255, 0);
+		tetribits[1][0] = new Tetribit(0, 255, 0);
+		tetribits[1][1] = new Tetribit(0, 255, 0);
+	}
+	
+	public void generateLine()
+	{
+		position = new Point(3, -4);
+		tetribits = new Tetribit[4][4];
+		tetribits[1][0] = new Tetribit(0, 255, 0);
+		tetribits[1][1] = new Tetribit(0, 255, 0);
+		tetribits[1][2] = new Tetribit(0, 255, 0);
+		tetribits[1][3] = new Tetribit(0, 255, 0);
+	}
+	
+	public void generateIntersection()
+	{
+		position = new Point(4, -3);
+		tetribits = new Tetribit[3][3];
+		tetribits[0][0] = new Tetribit(0, 255, 0);
+		tetribits[0][1] = new Tetribit(0, 255, 0);
+		tetribits[1][1] = new Tetribit(0, 255, 0);
+		tetribits[0][2] = new Tetribit(0, 255, 0);
 	}
 	
 	public void drop()
