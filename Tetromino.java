@@ -21,6 +21,20 @@ public class Tetromino
 		}
 	}
 	
+	public Tetromino(char tetraglyph)
+	{
+		switch(tetraglyph)
+		{
+		case 'I': generateLine(); break;
+		case 'J': generateLeftangle(); break;
+		case 'L': generateRightangle(); break;
+		case 'O': generateSquare(); break;
+		case 'T': generateIntersection(); break;
+		case 'S': generateLeftparallelogram(); break;
+		case 'Z': generateRightparallelogram(); break;
+		}
+	}
+	
 	public void generateRightangle()
 	{
 		position = new Point(4, -3);
