@@ -133,6 +133,8 @@ public class Tetwis
 		{
 			while(true)
 			{
+				sleep();
+				
 				if(tetratrix.canDrop(tetromino))
 				{
 					tetromino.drop();
@@ -143,7 +145,6 @@ public class Tetwis
 				}
 				
 				repaint();
-				sleep();
 			}
 		}
 		
