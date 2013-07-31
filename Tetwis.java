@@ -92,7 +92,7 @@ public class Tetwis
 			GFX2D.draw(background);
 			
 			Shape leftframe = new Rectangle(0, 0, 56, 504);
-			Shape rightframe = new Rectangle(337, 0, 56, 504);
+			Shape rightframe = new Rectangle(339, 0, 56, 504);
 			Shape bottomframe = new Rectangle(0, 504, 393, 56);
 			GFX2D.setColor(Color.RED);
 			GFX2D.fill(leftframe); GFX2D.draw(leftframe);
@@ -105,7 +105,7 @@ public class Tetwis
 				{
 					if(tetratrix.tetribits[x][y] != null)
 					{
-						Shape square = new Rectangle(x*28+57, y*28, 28-1, 28-1);
+						Shape square = new Rectangle(x*28+57+2, y*28, 28-1-2, 28-1-2);
 						GFX2D.setColor(tetratrix.tetribits[x][y].color);
 						GFX2D.fill(square); GFX2D.draw(square);
 					}
@@ -118,7 +118,7 @@ public class Tetwis
 				{
 					if(tetromino.tetribits[x][y] != null)
 					{
-						Shape square = new Rectangle(x*28+57+tetromino.position.x*28, y*28+tetromino.position.y*28, 28-1, 28-1);
+						Shape square = new Rectangle(x*28+57+2+tetromino.position.x*28, y*28+tetromino.position.y*28, 28-1-2, 28-1-2);
 						GFX2D.setColor(tetromino.tetribits[x][y].color);
 						GFX2D.fill(square); GFX2D.draw(square);
 					}
@@ -128,7 +128,7 @@ public class Tetwis
 		
 		public Dimension getPreferredSize()
 		{
-			return new Dimension(393, 561);
+			return new Dimension(395, 561);
 		}
 		
 		public void run()
