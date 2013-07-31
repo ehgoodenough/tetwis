@@ -124,4 +124,25 @@ public class Tetratrix
 			}
 		}
 	}
+	
+	public boolean hasTetrow(int y)
+	{
+		for(int x = 0; x < WIDTH_IN_TETRIBITS; x++)
+		{
+			if(tetribits[x][y] == null) {return false;}
+		}
+		
+		return true;
+	}
+	
+	public void deleteTetrow(int y)
+	{
+		for(y = y; y > 0; y--)
+		{
+			for(int x = 0; x < WIDTH_IN_TETRIBITS; x++)
+			{
+				tetribits[x][y] = tetribits[x][y - 1];
+			}
+		}
+	}
 }

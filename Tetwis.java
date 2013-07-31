@@ -27,6 +27,8 @@ public class Tetwis
 	{
 		Thread gameloop;
 		
+		int gamescore = 0;
+		
 		Tetromino tetromino = new Tetromino();
 		Tetratrix tetratrix = new Tetratrix();
 		
@@ -153,6 +155,15 @@ public class Tetwis
 			if(tetratrix.canEmbed(tetromino))
 			{
 				tetratrix.embed(tetromino);
+				
+				for(int y = 0; y < tetratrix.HEIGHT_IN_TETRIBITS; y++)
+				{
+					if(tetratrix.hasTetrow(y))
+					{
+						System.out.println(++gamescore);
+						tetratrix.deleteTetrow(y);
+					}
+				}
 				
 				tetromino = new Tetromino();
 			}
