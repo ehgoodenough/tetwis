@@ -28,6 +28,7 @@ public class Tetwis
 		Thread gameloop;
 		
 		int gamescore = 0;
+		int loopdelay = 1000;
 		
 		Tetromino tetromino = new Tetromino();
 		Tetratrix tetratrix = new Tetratrix();
@@ -179,6 +180,11 @@ public class Tetwis
 					}
 				}
 				
+				if(Math.floor(gamescore/10)*10 < Math.floor((gamescore+comboscore)/10)*10)
+				{
+					loopdelay -= 50; if(loopdelay < 100) {loopdelay = 100;}
+				}
+				
 				gamescore += comboscore;
 				
 				tetromino = new Tetromino();
@@ -192,7 +198,7 @@ public class Tetwis
 		
 		public void sleep()
 		{
-			try {Thread.sleep(1000);}
+			try {Thread.sleep(loopdelay);}
 			catch(InterruptedException err)
 			{sleep();}
 		}
