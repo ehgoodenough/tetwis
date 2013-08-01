@@ -44,7 +44,11 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canShiftLeft(tetromino)) {tetromino.shiftleft();}
+					if(tetratrix.canShiftLeft(tetromino))
+					{
+						tetromino.shiftleft();
+					}
+					
 					repaint();
 				}
 			});
@@ -52,7 +56,11 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canShiftRight(tetromino)) {tetromino.shiftright();}
+					if(tetratrix.canShiftRight(tetromino))
+					{
+						tetromino.shiftright();
+					}
+					
 					repaint();
 				}
 			});
@@ -60,24 +68,43 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canDrop(tetromino)) {tetromino.drop();}
-					else {reset();} repaint(); gameloop.interrupt();
+					if(tetratrix.canDrop(tetromino))
+					{
+						tetromino.drop();
+					}
+					else
+					{
+						reset();
+					}
+					
+					repaint();
+					resleep();
 				}
 			});
 			getActionMap().put("harddrop", new AbstractAction()
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					while(tetratrix.canDrop(tetromino)) {tetromino.drop();}
-					reset(); repaint(); gameloop.interrupt();
+					while(tetratrix.canDrop(tetromino))
+					{
+						tetromino.drop();
+					}
+					
+					repaint();
+					resleep();
 				}
 			});
 			getActionMap().put("rotate", new AbstractAction()
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canRotate(tetromino)) {tetromino.rotate();}
-					repaint(); gameloop.interrupt();
+					if(tetratrix.canRotate(tetromino))
+					{
+						tetromino.rotate();
+					}
+					
+					repaint();
+					resleep();
 				}
 			});
 			
@@ -153,6 +180,11 @@ public class Tetwis
 				
 				repaint();
 			}
+		}
+		
+		public void resleep()
+		{
+			gameloop.interrupt();
 		}
 		
 		public void reset()
