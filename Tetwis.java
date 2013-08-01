@@ -160,14 +160,26 @@ public class Tetwis
 			{
 				tetratrix.embed(tetromino);
 				
+				int comboscore = 0;
+				
 				for(int y = 0; y < tetratrix.HEIGHT_IN_TETRIBITS; y++)
 				{
 					if(tetratrix.hasTetrow(y))
 					{
-						gamescore++;
+						if(comboscore == 0)
+						{
+							comboscore++;
+						}
+						else
+						{
+							comboscore *= 2;
+						}
+						
 						tetratrix.deleteTetrow(y);
 					}
 				}
+				
+				gamescore += comboscore;
 				
 				tetromino = new Tetromino();
 			}
