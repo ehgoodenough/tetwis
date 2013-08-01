@@ -124,6 +124,10 @@ public class Tetwis
 					}
 				}
 			}
+			
+			GFX2D.setColor(Color.BLACK);
+			GFX2D.setFont(new Font("Lucida Console", Font.PLAIN, 50));
+			GFX2D.drawString(Integer.toString(gamescore), 56, 504+47);
 		}
 		
 		public Dimension getPreferredSize()
@@ -160,7 +164,7 @@ public class Tetwis
 				{
 					if(tetratrix.hasTetrow(y))
 					{
-						System.out.println(++gamescore);
+						gamescore++;
 						tetratrix.deleteTetrow(y);
 					}
 				}
