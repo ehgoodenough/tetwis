@@ -30,6 +30,8 @@ public class Tetwis
 		int gamescore = 0;
 		int loopdelay = 1000;
 		
+		boolean delayAfterHarddrop = false;
+		
 		Tetromino tetromino = new Tetromino();
 		Tetratrix tetratrix = new Tetratrix();
 		
@@ -88,6 +90,11 @@ public class Tetwis
 					while(tetratrix.canDrop(tetromino))
 					{
 						tetromino.drop();
+					}
+					
+					if(!delayAfterHarddrop)
+					{
+						reset();
 					}
 					
 					repaint();
