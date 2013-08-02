@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -230,6 +232,32 @@ public class Tetwis
 			}
 			else
 			{
+				String highscore = null;
+				
+				try
+				{
+					File highscores = new File("highscores.txt");
+					if(!highscores.exists()) {highscores.createNewFile();}
+					BufferedReader highscoresReader = new BufferedReader(new FileReader(highscores));
+
+					while((highscore = highscoresReader.readLine()) != null)
+					{
+						if(gamescore > Integer.parseInt(highscore))
+						{
+							System.out.println(gamescore);
+							System.out.println(highscore);
+						}
+						else
+						{
+							System.out.println(highscore);
+						}
+					}
+					
+					highscoresReader.close();
+				}
+				catch(FileNotFoundException exception) {System.out.println("Unable to open the file for highscores.");}
+				catch(IOException exception) {System.out.println("Encountered an error while reading the highscores.");}
+				
 				setVisible(false);
 				System.exit(0);
 			}
