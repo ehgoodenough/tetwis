@@ -270,7 +270,8 @@ public class Tetwis
 					
 					for(int i = 0; i < Math.min(highscores.size(), 10); i++)
 					{
-						highscoresWriter.write(highscores.get(i).toString() + "\n");
+						highscoresWriter.write(highscores.get(i).toString());
+						if(i < Math.min(highscores.size(), 10) - 1) {highscoresWriter.write("\n");}
 					}
 					
 					highscoresWriter.close();
