@@ -248,7 +248,7 @@ public class Tetwis
 					highscoresReader.close();
 					
 					BufferedWriter highscoresWriter = new BufferedWriter(new FileWriter(highscores));
-					highscoresWriter.write(gamescore);
+					highscoresWriter.write(Integer.toString(gamescore));
 					highscoresWriter.close();
 				}
 				catch(FileNotFoundException exception) {System.out.println("Unable to open the file for highscores.");}
