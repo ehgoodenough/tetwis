@@ -232,23 +232,47 @@ public class Tetwis
 			}
 			else
 			{
-				String highscore = null;
-				
 				try
 				{
-					File highscores = new File("highscores.txt");
-					if(!highscores.exists()) {highscores.createNewFile();}
-					BufferedReader highscoresReader = new BufferedReader(new FileReader(highscores));
+					File highscoresFile = new File("highscores.txt");
+					if(!highscoresFile.exists()) {highscoresFile.createNewFile();}
+					BufferedReader highscoresReader = new BufferedReader(new FileReader(highscoresFile));
+					Scanner highscoresScanner = new Scanner(highscoresReader);
 					
-					while((highscore = highscoresReader.readLine()) != null)
+					ArrayList<Integer> highscores = new ArrayList<Integer>();
+					boolean haveRecordedYourGamescore = false;
+					
+					while(highscoresScanner.hasNextLine())
 					{
-						System.out.println(highscore);
+						int highscore = Integer.parseInt(highscoresScanner.nextLine());
+						
+						if(!haveRecordedYourGamescore)
+						{
+							if(gamescore > highscore)
+							{
+								highscores.add(gamescore);
+								haveRecordedYourGamescore = true;
+							}
+						}
+						
+						highscores.add(highscore);
 					}
 					
+					if(!haveRecordedYourGamescore)
+					{
+						highscores.add(gamescore);
+					}
+					
+					highscoresScanner.close();
 					highscoresReader.close();
 					
-					BufferedWriter highscoresWriter = new BufferedWriter(new FileWriter(highscores));
-					highscoresWriter.write(Integer.toString(gamescore));
+					BufferedWriter highscoresWriter = new BufferedWriter(new FileWriter(highscoresFile));
+					
+					for(int i = 0; i < Math.min(highscores.size(), 10); i++)
+					{
+						highscoresWriter.write(highscores.get(i).toString() + "\n");
+					}
+					
 					highscoresWriter.close();
 				}
 				catch(FileNotFoundException exception) {System.out.println("Unable to open the file for highscores.");}
