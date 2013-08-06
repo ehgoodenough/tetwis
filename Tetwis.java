@@ -35,7 +35,7 @@ public class Tetwis
 		boolean delayAfterHarddrop = false;
 		
 		Tetromino activeTetromino = new Tetromino();
-		Tetromino ghostTetromino = new Tetromino();
+		Tetromino ghostTetromino = new Tetromino(activeTetromino);
 		Tetratrix tetratrix = new Tetratrix();
 		
 		public TetwisJComponent()
@@ -55,10 +55,7 @@ public class Tetwis
 						
 						ghostTetromino.position.x = activeTetromino.position.x;
 						ghostTetromino.position.y = activeTetromino.position.y;
-						while(tetratrix.canDrop(ghostTetromino))
-						{
-							ghostTetromino.drop();
-						}
+						while(tetratrix.canDrop(ghostTetromino)) {ghostTetromino.drop();}
 					}
 					
 					repaint();
@@ -74,10 +71,9 @@ public class Tetwis
 						
 						ghostTetromino.position.x = activeTetromino.position.x;
 						ghostTetromino.position.y = activeTetromino.position.y;
-						while(tetratrix.canDrop(ghostTetromino))
-						{
-							ghostTetromino.drop();
-						}
+						ghostTetromino.position.x = activeTetromino.position.x;
+						ghostTetromino.position.y = activeTetromino.position.y;
+						while(tetratrix.canDrop(ghostTetromino)) {ghostTetromino.drop();}
 					}
 					
 					repaint();
@@ -129,10 +125,7 @@ public class Tetwis
 						ghostTetromino.rotate();
 						ghostTetromino.position.x = activeTetromino.position.x;
 						ghostTetromino.position.y = activeTetromino.position.y;
-						while(tetratrix.canDrop(ghostTetromino))
-						{
-							ghostTetromino.drop();
-						}
+						while(tetratrix.canDrop(ghostTetromino)) {ghostTetromino.drop();}
 					}
 					
 					repaint();
@@ -140,7 +133,9 @@ public class Tetwis
 				}
 			});
 			
-			ghostTetromino.position.y = 5;
+			ghostTetromino.position.x = activeTetromino.position.x;
+			ghostTetromino.position.y = activeTetromino.position.y;
+			while(tetratrix.canDrop(ghostTetromino)) {ghostTetromino.drop();}
 			
 			(gameloop = new Thread(this)).start();
 		}
@@ -267,6 +262,10 @@ public class Tetwis
 				gamescore += comboscore;
 				
 				activeTetromino = new Tetromino();
+				ghostTetromino = new Tetromino(activeTetromino);
+				ghostTetromino.position.x = activeTetromino.position.x;
+				ghostTetromino.position.y = activeTetromino.position.y;
+				while(tetratrix.canDrop(ghostTetromino)) {ghostTetromino.drop();}
 			}
 			else
 			{

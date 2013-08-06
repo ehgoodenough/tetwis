@@ -35,6 +35,12 @@ public class Tetromino
 		}
 	}
 	
+	public Tetromino(Tetromino tetromino)
+	{
+		position = new Point();
+		tetribits = tetromino.tetribits;
+	}
+	
 	public void generateLine()
 	{
 		position = new Point(3, -4);
