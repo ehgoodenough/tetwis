@@ -34,7 +34,8 @@ public class Tetwis
 		
 		boolean delayAfterHarddrop = false;
 		
-		Tetromino tetromino = new Tetromino();
+		Tetromino activeTetromino = new Tetromino();
+		Tetromino ghostTetromino = new Tetromino();
 		Tetratrix tetratrix = new Tetratrix();
 		
 		public TetwisJComponent()
@@ -48,9 +49,16 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canShiftLeft(tetromino))
+					if(tetratrix.canShiftLeft(activeTetromino))
 					{
-						tetromino.shiftleft();
+						activeTetromino.shiftleft();
+					}
+					
+					ghostTetromino.position.x = activeTetromino.position.x;
+					ghostTetromino.position.y = activeTetromino.position.y;
+					while(tetratrix.canDrop(ghostTetromino))
+					{
+						ghostTetromino.drop();
 					}
 					
 					repaint();
@@ -60,9 +68,16 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canShiftRight(tetromino))
+					if(tetratrix.canShiftRight(activeTetromino))
 					{
-						tetromino.shiftright();
+						activeTetromino.shiftright();
+					}
+					
+					ghostTetromino.position.x = activeTetromino.position.x;
+					ghostTetromino.position.y = activeTetromino.position.y;
+					while(tetratrix.canDrop(ghostTetromino))
+					{
+						ghostTetromino.drop();
 					}
 					
 					repaint();
@@ -72,9 +87,9 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canDrop(tetromino))
+					if(tetratrix.canDrop(activeTetromino))
 					{
-						tetromino.drop();
+						activeTetromino.drop();
 					}
 					else
 					{
@@ -89,9 +104,9 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					while(tetratrix.canDrop(tetromino))
+					while(tetratrix.canDrop(activeTetromino))
 					{
-						tetromino.drop();
+						activeTetromino.drop();
 					}
 					
 					if(!delayAfterHarddrop)
@@ -107,15 +122,17 @@ public class Tetwis
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					if(tetratrix.canRotate(tetromino))
+					if(tetratrix.canRotate(activeTetromino))
 					{
-						tetromino.rotate();
+						activeTetromino.rotate();
 					}
 					
 					repaint();
 					resleep();
 				}
 			});
+			
+			ghostTetromino.position.y = 5;
 			
 			(gameloop = new Thread(this)).start();
 		}
@@ -149,14 +166,27 @@ public class Tetwis
 				}
 			}
 			
-			for(int x = 0; x < tetromino.tetribits.length; x++)
+			for(int x = 0; x < ghostTetromino.tetribits.length; x++)
 			{
-				for(int y = 0; y < tetromino.tetribits[x].length; y++)
+				for(int y = 0; y < ghostTetromino.tetribits[x].length; y++)
 				{
-					if(tetromino.tetribits[x][y] != null)
+					if(ghostTetromino.tetribits[x][y] != null)
 					{
-						Shape square = new Rectangle(x*28+57+2+tetromino.position.x*28, y*28+tetromino.position.y*28, 28-1-2, 28-1-2);
-						GFX2D.setColor(tetromino.tetribits[x][y].color);
+						Shape square = new Rectangle(x*28+57+2+ghostTetromino.position.x*28, y*28+ghostTetromino.position.y*28, 28-1-2, 28-1-2);
+						GFX2D.setColor(Color.MAGENTA);
+						GFX2D.fill(square); GFX2D.draw(square);
+					}
+				}
+			}
+			
+			for(int x = 0; x < activeTetromino.tetribits.length; x++)
+			{
+				for(int y = 0; y < activeTetromino.tetribits[x].length; y++)
+				{
+					if(activeTetromino.tetribits[x][y] != null)
+					{
+						Shape square = new Rectangle(x*28+57+2+activeTetromino.position.x*28, y*28+activeTetromino.position.y*28, 28-1-2, 28-1-2);
+						GFX2D.setColor(activeTetromino.tetribits[x][y].color);
 						GFX2D.fill(square); GFX2D.draw(square);
 					}
 				}
@@ -178,9 +208,9 @@ public class Tetwis
 			{
 				sleep();
 				
-				if(tetratrix.canDrop(tetromino))
+				if(tetratrix.canDrop(activeTetromino))
 				{
-					tetromino.drop();
+					activeTetromino.drop();
 				}
 				else
 				{
@@ -198,9 +228,9 @@ public class Tetwis
 		
 		public void reset()
 		{
-			if(tetratrix.canEmbed(tetromino))
+			if(tetratrix.canEmbed(activeTetromino))
 			{
-				tetratrix.embed(tetromino);
+				tetratrix.embed(activeTetromino);
 				
 				int comboscore = 0;
 				
@@ -228,7 +258,7 @@ public class Tetwis
 				
 				gamescore += comboscore;
 				
-				tetromino = new Tetromino();
+				activeTetromino = new Tetromino();
 			}
 			else
 			{
