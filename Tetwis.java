@@ -52,13 +52,13 @@ public class Tetwis
 					if(tetratrix.canShiftLeft(activeTetromino))
 					{
 						activeTetromino.shiftleft();
-					}
-					
-					ghostTetromino.position.x = activeTetromino.position.x;
-					ghostTetromino.position.y = activeTetromino.position.y;
-					while(tetratrix.canDrop(ghostTetromino))
-					{
-						ghostTetromino.drop();
+						
+						ghostTetromino.position.x = activeTetromino.position.x;
+						ghostTetromino.position.y = activeTetromino.position.y;
+						while(tetratrix.canDrop(ghostTetromino))
+						{
+							ghostTetromino.drop();
+						}
 					}
 					
 					repaint();
@@ -71,13 +71,13 @@ public class Tetwis
 					if(tetratrix.canShiftRight(activeTetromino))
 					{
 						activeTetromino.shiftright();
-					}
-					
-					ghostTetromino.position.x = activeTetromino.position.x;
-					ghostTetromino.position.y = activeTetromino.position.y;
-					while(tetratrix.canDrop(ghostTetromino))
-					{
-						ghostTetromino.drop();
+						
+						ghostTetromino.position.x = activeTetromino.position.x;
+						ghostTetromino.position.y = activeTetromino.position.y;
+						while(tetratrix.canDrop(ghostTetromino))
+						{
+							ghostTetromino.drop();
+						}
 					}
 					
 					repaint();
@@ -125,6 +125,14 @@ public class Tetwis
 					if(tetratrix.canRotate(activeTetromino))
 					{
 						activeTetromino.rotate();
+						
+						ghostTetromino.rotate();
+						ghostTetromino.position.x = activeTetromino.position.x;
+						ghostTetromino.position.y = activeTetromino.position.y;
+						while(tetratrix.canDrop(ghostTetromino))
+						{
+							ghostTetromino.drop();
+						}
 					}
 					
 					repaint();
