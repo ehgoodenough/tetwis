@@ -152,6 +152,7 @@ public class Tetwis
 					
 					reghost();
 					repaint();
+					resleep();
 				}
 			});
 			
