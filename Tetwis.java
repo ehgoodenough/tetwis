@@ -188,6 +188,8 @@ public class Tetwis
 			GFX2D.setColor(Color.BLACK);
 			GFX2D.setFont(new Font("Lucida Console", Font.PLAIN, 50));
 			GFX2D.drawString(Integer.toString(gamescore), 56, 504+47);
+			GFX2D.setFont(new Font("Lucida Console", Font.BOLD, 24));
+			GFX2D.drawString("NEXT:?", 56 + 200-7, 504+47-22);
 		}
 		
 		public Dimension getPreferredSize()
