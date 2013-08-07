@@ -145,8 +145,8 @@ public class Tetwis
 						nextTetromino = new Tetromino();
 					}
 					
-					heldTetromino.position.x = 4;
-					heldTetromino.position.y = 3;
+					heldTetromino.position.x = heldTetromino.origin.x;
+					heldTetromino.position.y = heldTetromino.origin.y;
 					
 					ghostTetromino = new Tetromino(activeTetromino);
 					
