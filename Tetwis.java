@@ -191,6 +191,7 @@ public class Tetwis
 			GFX2D.drawString(Integer.toString(gamescore), 56, 504+47);
 			GFX2D.setFont(new Font("Lucida Console", Font.BOLD, 24));
 			GFX2D.drawString("NEXT:" + nextTetromino.tetraglyph, 56 + 200-7, 504+47-22);
+			if(heldTetromino != null) {GFX2D.drawString("HELD:" + heldTetromino.tetraglyph, 56 + 200-7, 504+47+1);}
 		}
 		
 		public Dimension getPreferredSize()
