@@ -34,6 +34,7 @@ public class Tetwis
 		
 		boolean delayAfterHarddrop = false;
 		
+		Tetromino heldTetromino = null;
 		Tetromino nextTetromino = new Tetromino();
 		Tetromino activeTetromino = new Tetromino();
 		Tetromino ghostTetromino = new Tetromino(activeTetromino);
@@ -46,6 +47,7 @@ public class Tetwis
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "softdrop");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "harddrop");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("UP"), "rotate");
+			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("Z"), "hold");
 			getActionMap().put("shiftleft", new AbstractAction()
 			{
 				public void actionPerformed(ActionEvent event)
@@ -123,6 +125,33 @@ public class Tetwis
 					
 					repaint();
 					resleep();
+				}
+			});
+			getActionMap().put("hold", new AbstractAction()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					if(heldTetromino != null)
+					{
+						Tetromino swapTetromino;
+						swapTetromino = heldTetromino;
+						heldTetromino = activeTetromino;
+						activeTetromino = swapTetromino;
+					}
+					else
+					{
+						heldTetromino = activeTetromino;
+						activeTetromino = nextTetromino;
+						nextTetromino = new Tetromino();
+					}
+					
+					heldTetromino.position.x = 4;
+					heldTetromino.position.y = 3;
+					
+					ghostTetromino = new Tetromino(activeTetromino);
+					
+					reghost();
+					repaint();
 				}
 			});
 			
