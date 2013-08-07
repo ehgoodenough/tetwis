@@ -34,6 +34,7 @@ public class Tetwis
 		
 		boolean delayAfterHarddrop = false;
 		
+		Tetromino nextTetromino = new Tetromino();
 		Tetromino activeTetromino = new Tetromino();
 		Tetromino ghostTetromino = new Tetromino(activeTetromino);
 		Tetratrix tetratrix = new Tetratrix();
@@ -189,7 +190,7 @@ public class Tetwis
 			GFX2D.setFont(new Font("Lucida Console", Font.PLAIN, 50));
 			GFX2D.drawString(Integer.toString(gamescore), 56, 504+47);
 			GFX2D.setFont(new Font("Lucida Console", Font.BOLD, 24));
-			GFX2D.drawString("NEXT:?", 56 + 200-7, 504+47-22);
+			GFX2D.drawString("NEXT:" + nextTetromino.tetraglyph, 56 + 200-7, 504+47-22);
 		}
 		
 		public Dimension getPreferredSize()
@@ -264,8 +265,9 @@ public class Tetwis
 				
 				gamescore += comboscore;
 				
-				activeTetromino = new Tetromino();
+				activeTetromino = nextTetromino;
 				ghostTetromino = new Tetromino(activeTetromino);
+				nextTetromino = new Tetromino();
 				
 				reghost();
 			}
