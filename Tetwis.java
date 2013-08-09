@@ -40,6 +40,10 @@ public class Tetwis
 		Tetromino ghostTetromino = new Tetromino(activeTetromino);
 		Tetratrix tetratrix = new Tetratrix();
 		
+		//Color darkColor = new Color(47, 47, 47);
+		Color brightColor = new Color(229, 229, 229);
+		Color darkColor = new Color(25, 25, 25);
+		
 		public TetwisJComponent()
 		{
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("LEFT"), "shiftleft");
@@ -166,13 +170,13 @@ public class Tetwis
 			Graphics2D GFX2D = (Graphics2D)GFX;
 			
 			Shape background = new Rectangle(getPreferredSize());
-			GFX2D.setColor(Color.BLUE); GFX2D.fill(background);
-			GFX2D.draw(background);
+			GFX2D.setColor(brightColor);
+			GFX2D.fill(background); GFX2D.draw(background);
 			
 			Shape leftframe = new Rectangle(0, 0, 56, 504);
 			Shape rightframe = new Rectangle(339, 0, 56, 504);
 			Shape bottomframe = new Rectangle(0, 504, 393, 56);
-			GFX2D.setColor(Color.RED);
+			GFX2D.setColor(darkColor);
 			GFX2D.fill(leftframe); GFX2D.draw(leftframe);
 			GFX2D.fill(rightframe); GFX2D.draw(rightframe);
 			GFX2D.fill(bottomframe); GFX2D.draw(bottomframe);
@@ -197,7 +201,7 @@ public class Tetwis
 					if(ghostTetromino.tetribits[x][y] != null)
 					{
 						Shape square = new Rectangle(x*28+57+2+ghostTetromino.position.x*28, y*28+ghostTetromino.position.y*28, 28-1-2, 28-1-2);
-						GFX2D.setColor(Color.MAGENTA);
+						GFX2D.setColor(Color.BLACK);
 						GFX2D.fill(square); GFX2D.draw(square);
 					}
 				}
@@ -216,7 +220,7 @@ public class Tetwis
 				}
 			}
 			
-			GFX2D.setColor(Color.BLACK);
+			GFX2D.setColor(brightColor);
 			GFX2D.setFont(new Font("Lucida Console", Font.PLAIN, 50));
 			GFX2D.drawString(Integer.toString(gamescore), 56, 504+47);
 			GFX2D.setFont(new Font("Lucida Console", Font.BOLD, 24));

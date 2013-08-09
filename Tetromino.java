@@ -49,10 +49,10 @@ public class Tetromino
 		origin = new Point(3, -4);
 		position = new Point(3, -4);
 		tetribits = new Tetribit[4][4];
-		tetribits[1][0] = new Tetribit(0, 255, 255);
-		tetribits[1][1] = new Tetribit(0, 255, 255);
-		tetribits[1][2] = new Tetribit(0, 255, 255);
-		tetribits[1][3] = new Tetribit(0, 255, 255);
+		tetribits[1][0] = new Tetribit(204, 204, 204);
+		tetribits[1][1] = new Tetribit(204, 204, 204);
+		tetribits[1][2] = new Tetribit(204, 204, 204);
+		tetribits[1][3] = new Tetribit(204, 204, 204);
 	}
 	
 	public void generateLeftangle()
@@ -61,10 +61,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		tetribits[0][0] = new Tetribit(255, 128, 0);
-		tetribits[0][1] = new Tetribit(255, 128, 0);
-		tetribits[0][2] = new Tetribit(255, 128, 0);
-		tetribits[1][2] = new Tetribit(255, 128, 0);
+		tetribits[0][0] = new Tetribit(178, 178, 178);
+		tetribits[0][1] = new Tetribit(178, 178, 178);
+		tetribits[0][2] = new Tetribit(178, 178, 178);
+		tetribits[1][2] = new Tetribit(178, 178, 178);
 	}
 	
 	public void generateRightangle()
@@ -73,10 +73,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		tetribits[1][0] = new Tetribit(0, 0, 128);
-		tetribits[1][1] = new Tetribit(0, 0, 128);
-		tetribits[1][2] = new Tetribit(0, 0, 128);
-		tetribits[0][2] = new Tetribit(0, 0, 128);
+		tetribits[1][0] = new Tetribit(153, 153, 153);
+		tetribits[1][1] = new Tetribit(153, 153, 153);
+		tetribits[1][2] = new Tetribit(153, 153, 153);
+		tetribits[0][2] = new Tetribit(153, 153, 153);
 	}
 	
 	public void generateSquare()
@@ -85,10 +85,10 @@ public class Tetromino
 		origin = new Point(4, -2);
 		position = new Point(4, -2);
 		tetribits = new Tetribit[2][2];
-		tetribits[0][0] = new Tetribit(255, 255, 0);
-		tetribits[0][1] = new Tetribit(255, 255, 0);
-		tetribits[1][0] = new Tetribit(255, 255, 0);
-		tetribits[1][1] = new Tetribit(255, 255, 0);
+		tetribits[0][0] = new Tetribit(127, 127, 127);
+		tetribits[0][1] = new Tetribit(127, 127, 127);
+		tetribits[1][0] = new Tetribit(127, 127, 127);
+		tetribits[1][1] = new Tetribit(127, 127, 127);
 	}
 	
 	public void generateIntersection()
@@ -97,10 +97,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		tetribits[0][0] = new Tetribit(128, 0, 128);
-		tetribits[0][1] = new Tetribit(128, 0, 128);
-		tetribits[1][1] = new Tetribit(128, 0, 128);
-		tetribits[0][2] = new Tetribit(128, 0, 128);
+		tetribits[0][0] = new Tetribit(102, 102, 102);
+		tetribits[0][1] = new Tetribit(102, 102, 102);
+		tetribits[1][1] = new Tetribit(102, 102, 102);
+		tetribits[0][2] = new Tetribit(102, 102, 102);
 	}
 	
 	public void generateLeftparallelogram()
@@ -109,10 +109,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		tetribits[0][0] = new Tetribit(0, 255, 0);
-		tetribits[0][1] = new Tetribit(0, 255, 0);
-		tetribits[1][1] = new Tetribit(0, 255, 0);
-		tetribits[1][2] = new Tetribit(0, 255, 0);
+		tetribits[0][0] = new Tetribit(76, 76, 76);
+		tetribits[0][1] = new Tetribit(76, 76, 76);
+		tetribits[1][1] = new Tetribit(76, 76, 76);
+		tetribits[1][2] = new Tetribit(76, 76, 76);
 	}
 	
 	public void generateRightparallelogram()
@@ -121,10 +121,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		tetribits[1][0] = new Tetribit(255, 0, 0);
-		tetribits[1][1] = new Tetribit(255, 0, 0);
-		tetribits[0][1] = new Tetribit(255, 0, 0);
-		tetribits[0][2] = new Tetribit(255, 0, 0);
+		tetribits[1][0] = new Tetribit(51, 51, 51);
+		tetribits[1][1] = new Tetribit(51, 51, 51);
+		tetribits[0][1] = new Tetribit(51, 51, 51);
+		tetribits[0][2] = new Tetribit(51, 51, 51);
 	}
 	
 	public void drop()
