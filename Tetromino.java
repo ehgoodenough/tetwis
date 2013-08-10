@@ -9,6 +9,14 @@ public class Tetromino
 	public Tetribit[][] tetribits;
 	public char tetraglyph;
 	
+	public Color lineColor = new Color(51, 51, 51);
+	public Color leftangleColor = new Color(76, 76, 76);
+	public Color rightangleColor = new Color(102, 102, 102);
+	public Color squareColor = new Color(127, 127, 127);
+	public Color intersectionColor = new Color(153, 153, 153);
+	public Color leftparallelogramColor = new Color(178, 178, 178);
+	public Color rightparallelogramColor = new Color(204, 204, 204);
+	
 	public Tetromino()
 	{
 		Random random = new Random();
@@ -50,11 +58,10 @@ public class Tetromino
 		origin = new Point(3, -4);
 		position = new Point(3, -4);
 		tetribits = new Tetribit[4][4];
-		Color color = new Color(204, 204, 204);
-		tetribits[1][0] = new Tetribit(color);
-		tetribits[1][1] = new Tetribit(color);
-		tetribits[1][2] = new Tetribit(color);
-		tetribits[1][3] = new Tetribit(color);
+		tetribits[1][0] = new Tetribit(lineColor);
+		tetribits[1][1] = new Tetribit(lineColor);
+		tetribits[1][2] = new Tetribit(lineColor);
+		tetribits[1][3] = new Tetribit(lineColor);
 	}
 	
 	public void generateLeftangle()
@@ -63,11 +70,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		Color color = new Color(178, 178, 178);
-		tetribits[0][0] = new Tetribit(color);
-		tetribits[0][1] = new Tetribit(color);
-		tetribits[0][2] = new Tetribit(color);
-		tetribits[1][2] = new Tetribit(color);
+		tetribits[0][0] = new Tetribit(leftangleColor);
+		tetribits[0][1] = new Tetribit(leftangleColor);
+		tetribits[0][2] = new Tetribit(leftangleColor);
+		tetribits[1][2] = new Tetribit(leftangleColor);
 	}
 	
 	public void generateRightangle()
@@ -76,11 +82,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		Color color = new Color(153, 153, 153);
-		tetribits[1][0] = new Tetribit(color);
-		tetribits[1][1] = new Tetribit(color);
-		tetribits[1][2] = new Tetribit(color);
-		tetribits[0][2] = new Tetribit(color);
+		tetribits[1][0] = new Tetribit(rightangleColor);
+		tetribits[1][1] = new Tetribit(rightangleColor);
+		tetribits[1][2] = new Tetribit(rightangleColor);
+		tetribits[0][2] = new Tetribit(rightangleColor);
 	}
 	
 	public void generateSquare()
@@ -89,11 +94,10 @@ public class Tetromino
 		origin = new Point(4, -2);
 		position = new Point(4, -2);
 		tetribits = new Tetribit[2][2];
-		Color color = new Color(127, 127, 127);
-		tetribits[0][0] = new Tetribit(color);
-		tetribits[0][1] = new Tetribit(color);
-		tetribits[1][0] = new Tetribit(color);
-		tetribits[1][1] = new Tetribit(color);
+		tetribits[0][0] = new Tetribit(squareColor);
+		tetribits[0][1] = new Tetribit(squareColor);
+		tetribits[1][0] = new Tetribit(squareColor);
+		tetribits[1][1] = new Tetribit(squareColor);
 	}
 	
 	public void generateIntersection()
@@ -102,11 +106,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		Color color = new Color(102, 102, 102);
-		tetribits[0][0] = new Tetribit(color);
-		tetribits[0][1] = new Tetribit(color);
-		tetribits[1][1] = new Tetribit(color);
-		tetribits[0][2] = new Tetribit(color);
+		tetribits[0][0] = new Tetribit(intersectionColor);
+		tetribits[0][1] = new Tetribit(intersectionColor);
+		tetribits[1][1] = new Tetribit(intersectionColor);
+		tetribits[0][2] = new Tetribit(intersectionColor);
 	}
 	
 	public void generateLeftparallelogram()
@@ -115,11 +118,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		Color color = new Color(76, 76, 76);
-		tetribits[0][0] = new Tetribit(color);
-		tetribits[0][1] = new Tetribit(color);
-		tetribits[1][1] = new Tetribit(color);
-		tetribits[1][2] = new Tetribit(color);
+		tetribits[0][0] = new Tetribit(leftparallelogramColor);
+		tetribits[0][1] = new Tetribit(leftparallelogramColor);
+		tetribits[1][1] = new Tetribit(leftparallelogramColor);
+		tetribits[1][2] = new Tetribit(leftparallelogramColor);
 	}
 	
 	public void generateRightparallelogram()
@@ -128,11 +130,10 @@ public class Tetromino
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
 		tetribits = new Tetribit[3][3];
-		Color color = new Color(51, 51, 51);
-		tetribits[1][0] = new Tetribit(color);
-		tetribits[1][1] = new Tetribit(color);
-		tetribits[0][1] = new Tetribit(color);
-		tetribits[0][2] = new Tetribit(color);
+		tetribits[1][0] = new Tetribit(rightparallelogramColor);
+		tetribits[1][1] = new Tetribit(rightparallelogramColor);
+		tetribits[0][1] = new Tetribit(rightparallelogramColor);
+		tetribits[0][2] = new Tetribit(rightparallelogramColor);
 	}
 	
 	public void drop()
