@@ -4,8 +4,8 @@ public class Tetribit
 {
 	public Color color;
 	
-	public Tetribit(int r, int g, int b)
+	public Tetribit(Color color)
 	{
-		color = new Color (r, g, b);
+		this.color = color;
 	}
 }
