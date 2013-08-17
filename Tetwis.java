@@ -32,6 +32,7 @@ public class Tetwis
 		int gamescore = 0;
 		int loopdelay = 1000;
 		
+		boolean allowInfiniteSpin = true;
 		boolean delayAfterHarddrop = false;
 		
 		Tetromino heldTetromino = null;
@@ -137,8 +138,12 @@ public class Tetwis
 						reghost();
 					}
 					
+					if(allowInfiniteSpin)
+					{
+						resleep();
+					}
+					
 					repaint();
-					resleep();
 				}
 			});
 			getActionMap().put("hold", new AbstractAction()
