@@ -54,6 +54,11 @@ public class Tetromino
 	
 	public void generateLine()
 	{
+		// *
+		// *
+		// *
+		// *
+		
 		tetraglyph = 'I';
 		origin = new Point(3, -4);
 		position = new Point(3, -4);
@@ -66,6 +71,10 @@ public class Tetromino
 	
 	public void generateLeftangle()
 	{
+		// *
+		// *
+		// **
+		
 		tetraglyph = 'L';
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
@@ -78,6 +87,10 @@ public class Tetromino
 	
 	public void generateRightangle()
 	{
+		//  *
+		//  *
+		// **
+		
 		tetraglyph = 'J';
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
@@ -90,6 +103,9 @@ public class Tetromino
 	
 	public void generateSquare()
 	{
+		// **
+		// **
+		
 		tetraglyph = 'O';
 		origin = new Point(4, -2);
 		position = new Point(4, -2);
@@ -102,6 +118,10 @@ public class Tetromino
 	
 	public void generateIntersection()
 	{
+		// *
+		// **
+		// *
+		
 		tetraglyph = 'T';
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
@@ -114,6 +134,10 @@ public class Tetromino
 	
 	public void generateLeftparallelogram()
 	{
+		// *
+		// **
+		//  *
+		
 		tetraglyph = 'S';
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
@@ -126,6 +150,10 @@ public class Tetromino
 	
 	public void generateRightparallelogram()
 	{
+		//  *
+		// **
+		// *
+		
 		tetraglyph = 'Z';
 		origin = new Point(4, -3);
 		position = new Point(4, -3);
