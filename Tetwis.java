@@ -70,8 +70,7 @@ public class Tetwis
 					if(tetratrix.canShiftLeft(activeTetromino))
 					{
 						activeTetromino.shiftleft();
-						
-						reghost();
+						recalculateGhostTetromino();
 					}
 					
 					repaint();
@@ -84,8 +83,7 @@ public class Tetwis
 					if(tetratrix.canShiftRight(activeTetromino))
 					{
 						activeTetromino.shiftright();
-						
-						reghost();
+						recalculateGhostTetromino();
 					}
 					
 					repaint();
@@ -101,7 +99,7 @@ public class Tetwis
 					}
 					else
 					{
-						reset();
+						resetActiveTetromino();
 					}
 					
 					repaint();
@@ -119,7 +117,7 @@ public class Tetwis
 					
 					if(!delayAfterHarddrop)
 					{
-						reset();
+						resetActiveTetromino();
 					}
 					
 					repaint();
@@ -133,9 +131,8 @@ public class Tetwis
 					if(tetratrix.canRotate(activeTetromino))
 					{
 						activeTetromino.rotate();
-						
 						ghostTetromino.rotate();
-						reghost();
+						recalculateGhostTetromino();
 					}
 					
 					if(allowInfiniteSpin)
@@ -168,14 +165,14 @@ public class Tetwis
 					heldTetromino.position.y = heldTetromino.origin.y;
 					
 					ghostTetromino = new Tetromino(activeTetromino);
+					recalculateGhostTetromino();
 					
-					reghost();
 					repaint();
 					resleep();
 				}
 			});
 			
-			reghost();
+			recalculateGhostTetromino();
 			
 			(gameloop = new Thread(this)).start();
 		}
@@ -269,19 +266,14 @@ public class Tetwis
 				}
 				else
 				{
-					reset();
+					resetActiveTetromino();
 				}
 				
 				repaint();
 			}
 		}
 		
-		public void resleep()
-		{
-			gameloop.interrupt();
-		}
-		
-		public void reghost()
+		public void recalculateGhostTetromino()
 		{
 			ghostTetromino.position.x = activeTetromino.position.x;
 			ghostTetromino.position.y = activeTetromino.position.y;
@@ -292,7 +284,7 @@ public class Tetwis
 			}
 		}
 		
-		public void reset()
+		public void resetActiveTetromino()
 		{
 			if(tetratrix.canEmbed(activeTetromino))
 			{
@@ -328,7 +320,7 @@ public class Tetwis
 				ghostTetromino = new Tetromino(activeTetromino);
 				nextTetromino = new Tetromino();
 				
-				reghost();
+				recalculateGhostTetromino();
 			}
 			else
 			{
@@ -389,6 +381,11 @@ public class Tetwis
 			try {Thread.sleep(loopdelay);}
 			catch(InterruptedException err)
 			{sleep();}
+		}
+		
+		public void resleep()
+		{
+			gameloop.interrupt();
 		}
 	}
 }
