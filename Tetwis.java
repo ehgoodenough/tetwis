@@ -38,14 +38,24 @@ public class Tetwis
 		Tetromino nextTetromino = new Tetromino();
 		Tetromino activeTetromino = new Tetromino();
 		Tetromino ghostTetromino = new Tetromino(activeTetromino);
+		
 		Tetratrix tetratrix = new Tetratrix();
 		
-		//Color darkColor = new Color(47, 47, 47);
 		Color brightColor = new Color(229, 229, 229);
 		Color darkColor = new Color(25, 25, 25);
 		
+		private final int GUTTER_FOR_TETRIBIT = 3;
+		private final int SIZE_OF_TETRIBIT = 28;
+		private final int WIDTH_OF_SIDEFRAME = 56;
+		private final int HEIGHT_OF_SIDEFRAME = 504;
+		private final int WIDTH_OF_TETRATRIX = SIZE_OF_TETRIBIT * tetratrix.WIDTH_IN_TETRIBITS + GUTTER_FOR_TETRIBIT;
+		private final int HEIGHT_OF_TETRATRIX = SIZE_OF_TETRIBIT * tetratrix.HEIGHT_IN_TETRIBITS;
+		private final int WIDTH_OF_JCOMPONENT = WIDTH_OF_SIDEFRAME + WIDTH_OF_TETRATRIX + WIDTH_OF_SIDEFRAME;
+		private final int HEIGHT_OF_JCOMPONENT = HEIGHT_OF_TETRATRIX + WIDTH_OF_SIDEFRAME;
+		
 		public TetwisJComponent()
 		{
+			
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("LEFT"), "shiftleft");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("RIGHT"), "shiftright");
 			getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "softdrop");
@@ -173,9 +183,9 @@ public class Tetwis
 			GFX2D.setColor(brightColor);
 			GFX2D.fill(background); GFX2D.draw(background);
 			
-			Shape leftframe = new Rectangle(0, 0, 56, 504);
-			Shape rightframe = new Rectangle(339, 0, 56, 504);
-			Shape bottomframe = new Rectangle(0, 504, 393, 56);
+			Shape leftframe = new Rectangle(0, 0, WIDTH_OF_SIDEFRAME, HEIGHT_OF_SIDEFRAME);
+			Shape rightframe = new Rectangle(WIDTH_OF_SIDEFRAME + WIDTH_OF_TETRATRIX, 0, WIDTH_OF_SIDEFRAME, HEIGHT_OF_SIDEFRAME);
+			Shape bottomframe = new Rectangle(0, HEIGHT_OF_SIDEFRAME, WIDTH_OF_JCOMPONENT, WIDTH_OF_SIDEFRAME);
 			GFX2D.setColor(darkColor);
 			GFX2D.fill(leftframe); GFX2D.draw(leftframe);
 			GFX2D.fill(rightframe); GFX2D.draw(rightframe);
@@ -187,7 +197,10 @@ public class Tetwis
 				{
 					if(tetratrix.tetribits[x][y] != null)
 					{
-						Shape square = new Rectangle(x*28+57+2, y*28, 28-1-2, 28-1-2);
+						int xpos = WIDTH_OF_SIDEFRAME + (x * SIZE_OF_TETRIBIT) + GUTTER_FOR_TETRIBIT;
+						int ypos = y * SIZE_OF_TETRIBIT;
+						int size = SIZE_OF_TETRIBIT - GUTTER_FOR_TETRIBIT;
+						Shape square = new Rectangle(xpos, ypos, size, size);
 						GFX2D.setColor(tetratrix.tetribits[x][y].color);
 						GFX2D.fill(square); GFX2D.draw(square);
 					}
@@ -200,7 +213,10 @@ public class Tetwis
 				{
 					if(ghostTetromino.tetribits[x][y] != null)
 					{
-						Shape square = new Rectangle(x*28+57+2+ghostTetromino.position.x*28, y*28+ghostTetromino.position.y*28, 28-1-2, 28-1-2);
+						int xpos = WIDTH_OF_SIDEFRAME + ((x + ghostTetromino.position.x) * SIZE_OF_TETRIBIT) + GUTTER_FOR_TETRIBIT;
+						int ypos = (y + ghostTetromino.position.y) * SIZE_OF_TETRIBIT;
+						int size = SIZE_OF_TETRIBIT - GUTTER_FOR_TETRIBIT;
+						Shape square = new Rectangle(xpos, ypos, size, size);
 						GFX2D.setColor(Color.BLACK);
 						GFX2D.fill(square); GFX2D.draw(square);
 					}
@@ -213,7 +229,10 @@ public class Tetwis
 				{
 					if(activeTetromino.tetribits[x][y] != null)
 					{
-						Shape square = new Rectangle(x*28+57+2+activeTetromino.position.x*28, y*28+activeTetromino.position.y*28, 28-1-2, 28-1-2);
+						int xpos = WIDTH_OF_SIDEFRAME + ((x + activeTetromino.position.x) * SIZE_OF_TETRIBIT) + GUTTER_FOR_TETRIBIT;
+						int ypos = (y + activeTetromino.position.y) * SIZE_OF_TETRIBIT;
+						int size = SIZE_OF_TETRIBIT - GUTTER_FOR_TETRIBIT;
+						Shape square = new Rectangle(xpos, ypos, size, size);
 						GFX2D.setColor(activeTetromino.tetribits[x][y].color);
 						GFX2D.fill(square); GFX2D.draw(square);
 					}
@@ -222,15 +241,15 @@ public class Tetwis
 			
 			GFX2D.setColor(brightColor);
 			GFX2D.setFont(new Font("Lucida Console", Font.PLAIN, 50));
-			GFX2D.drawString(Integer.toString(gamescore), 56, 504+47);
+			GFX2D.drawString(Integer.toString(gamescore), WIDTH_OF_SIDEFRAME, HEIGHT_OF_SIDEFRAME + 47);
 			GFX2D.setFont(new Font("Lucida Console", Font.BOLD, 24));
-			GFX2D.drawString("NEXT:" + nextTetromino.tetraglyph, 56 + 200-7, 504+47-22);
-			if(heldTetromino != null) {GFX2D.drawString("HELD:" + heldTetromino.tetraglyph, 56 + 200-7, 504+47+1);}
+			GFX2D.drawString("NEXT:" + nextTetromino.tetraglyph, WIDTH_OF_SIDEFRAME + 193, HEIGHT_OF_SIDEFRAME + 47 - 22);
+			if(heldTetromino != null) {GFX2D.drawString("HELD:" + heldTetromino.tetraglyph, WIDTH_OF_SIDEFRAME + 193, HEIGHT_OF_SIDEFRAME + 47 + 1);}
 		}
 		
 		public Dimension getPreferredSize()
 		{
-			return new Dimension(395, 561);
+			return new Dimension(WIDTH_OF_JCOMPONENT, HEIGHT_OF_JCOMPONENT);
 		}
 		
 		public void run()
