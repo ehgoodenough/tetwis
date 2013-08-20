@@ -24,6 +24,15 @@ The project attempts to adhere to the [specifications defined in the official gu
   - Holding another tetromino.
   - Ghosting a tetromino.
 
+##Structure of Tetwis##
+The code is structured around the object oriented paradigm, with each intrinsic component individually encapsulated into a class. This includes the Tetribits, Tetrominos, and Tetratrix.
+###Tetribits###
+The tetribit is the unit of bit that composes everything in the game. It is nothing more than a square that is repositioned and recolored in both the tetratrix and tetrominos.
+###Tetrominos###
+The tetromino is an orthogonal compilation of four tetribits. There are only seven different shapes of tetrominos, which can each be labelled with a letter. This includes I, L, J, O, T, S and Z. A tetromino can be dropped down, rotated around, as well as shifted left and right.
+###Tetratrix###
+The tetratrix is a matrix of tetribits. It is sometimes known as the "well" or "field" in other versions of tetris. The tetratrix is responsible for handling the collision of tetrominos and the embedding of tetribits. When a tetromino has dropped to the bottom of the tetratrix, the tetribits that compose the tetromino are embedded into the tetratrix. If a row of tetratrix is completed, it is removed and refactored, which increases the score.
+
 ##Feedback for Tetwis##
 If you have anything to add to the project, you can always fork the repository for yourself, and if you have anything to discuss with me, you can always contact me at either andrewmcp333@gmail.com or psn719@mocs.utc.edu. Thanks!
 
