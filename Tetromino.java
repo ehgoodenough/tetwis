@@ -17,6 +17,9 @@ public class Tetromino
 	public Color leftparallelogramColor = new Color(178, 178, 178);
 	public Color rightparallelogramColor = new Color(204, 204, 204);
 	
+	/**
+	 * Constructs the tetromino through randomization.
+	 */
 	public Tetromino()
 	{
 		Random random = new Random();
@@ -32,6 +35,11 @@ public class Tetromino
 		}
 	}
 	
+	/**
+	 * Constructs the tetromino by it's tetraglyph.
+	 *
+	 * @param	tetraglyph	a character of the tetromino.
+	 */
 	public Tetromino(char tetraglyph)
 	{
 		switch(tetraglyph)
@@ -46,12 +54,21 @@ public class Tetromino
 		}
 	}
 	
+	/**
+	 * Constructs the tetromino by cloning the 
+	 * tetribits of another tetromino.
+	 *
+	 * @param	tetromino	the tetromino to be cloned.
+	 */
 	public Tetromino(Tetromino tetromino)
 	{
 		position = new Point();
 		tetribits = tetromino.tetribits;
 	}
 	
+	/**
+	 * Generates the tetromino as a line.
+	 */
 	public void generateLine()
 	{
 		// *
@@ -69,6 +86,9 @@ public class Tetromino
 		tetribits[1][3] = new Tetribit(lineColor);
 	}
 	
+	/**
+	 * Generates the tetromino as a left angle.
+	 */
 	public void generateLeftangle()
 	{
 		// *
@@ -85,6 +105,9 @@ public class Tetromino
 		tetribits[1][2] = new Tetribit(leftangleColor);
 	}
 	
+	/**
+	 * Generates the tetromino as a right angle.
+	 */
 	public void generateRightangle()
 	{
 		//  *
@@ -101,6 +124,9 @@ public class Tetromino
 		tetribits[0][2] = new Tetribit(rightangleColor);
 	}
 	
+	/**
+	 * Generates the tetromino as a square.
+	 */
 	public void generateSquare()
 	{
 		// **
@@ -116,6 +142,9 @@ public class Tetromino
 		tetribits[1][1] = new Tetribit(squareColor);
 	}
 	
+	/**
+	 * Generates the tetromino as an intersection.
+	 */
 	public void generateIntersection()
 	{
 		// *
@@ -132,6 +161,9 @@ public class Tetromino
 		tetribits[0][2] = new Tetribit(intersectionColor);
 	}
 	
+	/**
+	 * Generates the tetromino as a left parallelogram.
+	 */
 	public void generateLeftparallelogram()
 	{
 		// *
@@ -148,6 +180,9 @@ public class Tetromino
 		tetribits[1][2] = new Tetribit(leftparallelogramColor);
 	}
 	
+	/**
+	 * Generates the tetromino as a right parallelogram.
+	 */
 	public void generateRightparallelogram()
 	{
 		//  *
@@ -164,21 +199,33 @@ public class Tetromino
 		tetribits[0][2] = new Tetribit(rightparallelogramColor);
 	}
 	
+	/**
+	 * Drops the tetromino.
+	 */
 	public void drop()
 	{
 		position.y++;
 	}
 	
+	/**
+	 * Shifts the tetromino to the left.
+	 */
 	public void shiftleft()
 	{
 		position.x--;
 	}
 	
+	/**
+	 * Shifts the tetromino to the right.
+	 */
 	public void shiftright()
 	{
 		position.x++;
 	}
 	
+	/**
+	 * Rotates the tetromino.
+	 */
 	public void rotate()
 	{
 		Tetribit[][] tetribits = new Tetribit[this.tetribits.length][this.tetribits[0].length];
