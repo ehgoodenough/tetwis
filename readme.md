@@ -33,6 +33,27 @@ The tetromino is an orthogonal compilation of four tetribits. There are only sev
 ###Tetratrix###
 The tetratrix is a matrix of tetribits. It is sometimes known as the "well" or "field" in other versions of tetris. The tetratrix is responsible for handling the collision of tetrominos and the embedding of tetribits. When a tetromino has dropped to the bottom of the tetratrix, the tetribits that compose the tetromino are embedded into the tetratrix. If a row of tetratrix is completed, it is removed and refactored, which increases the score.
 
+##To Do of Tetwis##
+  - Instantiate the tetrominos a bit lower in the tetratrix.
+  - Initiate the game as either monoplayer or multiplayer.
+  - Highlight the game when a player reaches a highscore.
+  - Construct an system for generating the next tetromino.
+  - Recognize players who have achieved a highscore.
+  - Read the keybindings from an external reconfigurable file.
+  - Prompt the players to provide their name for their highscore.
+  - Render graphics for the held tetromino and next tetromino.
+  - Comment your code more thoroughly.
+  - Stop the players from performing consecutive holds of tetrominos.
+  - Replace the tetromino.tetribi\[0\].length with getTetrominoHeight().
+  - Begin with a titlescreen for navigating around the configurations of the game.
+  - Play a sound when a tetromino is dropped or when the tetratrix is completed.
+  - Remove any and all magic numbers in generating the swing compoents.
+  - Confirm the effectiveness of the increasing difficulty across the game.
+  - What is the best approach towards anonymous functions as keystrokes?
+  - Should ghosts be capable of referencing the data of the tetromino?
+  - Are the try catches necessary when calculating the collision?
+  - Should the tetribits be maintained by index or point?
+
 ##Feedback for Tetwis##
 If you have anything to add to the project, you can always fork the repository for yourself, and if you have anything to discuss with me, you can always contact me at either andrewmcp333@gmail.com or psn719@mocs.utc.edu. Thanks!
 
