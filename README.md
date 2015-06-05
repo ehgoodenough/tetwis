@@ -81,7 +81,7 @@ the tetratrix. If a row of the tetratrix is completed, it is removed, and the sc
 
 ## License ##
 
-Tetwis is covered by the [MIT License]((http://tetwis.mit-license.org)).
+Tetwis is covered by the [MIT License](http://tetwis.mit-license.org).
 
 [0]: http://web.archive.org/web/20051104034215/http://www.lupinegames.com/articles/path_to_dev.html
 [1]: http://tetris.wikia.com/wiki/Tetris_Guideline
