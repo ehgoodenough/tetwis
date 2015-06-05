@@ -1,4 +1,4 @@
-# Tetwis #
+# Tetwis [![License](http://img.shields.io/:license-mit-blue.svg)](http://tetwis.mit-license.org)
 
 ![Tetwis](http://i.imgur.com/lHgYe9R.gif)
 
@@ -78,6 +78,10 @@ the tetratrix. If a row of the tetratrix is completed, it is removed, and the sc
  - Should ghosts be capable of referencing the data of the tetromino?
  - Are the try catches necessary when calculating the collision?
  - Should the tetribits be maintained by index or point?
+
+## License ##
+
+Tetwis is covered by the [MIT License]((http://tetwis.mit-license.org)).
 
 [0]: http://web.archive.org/web/20051104034215/http://www.lupinegames.com/articles/path_to_dev.html
 [1]: http://tetris.wikia.com/wiki/Tetris_Guideline
